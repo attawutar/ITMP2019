@@ -16,6 +16,7 @@
 	height:var(--size);
 	width: var(--size);
 	background: hsl(var(--hue),90%,70%);
+	border-radius: 50%;
 	display: inline-block;
 }
 #howManyRainbowStripsDoYouWantHeu{
@@ -63,7 +64,7 @@ button{
 			thePlay = setInterval(function(){
 				if (k>= theFuseSize) {k=0}
 				if (j>= theFuseSize) {j=0}
-				theFuse[k].style.transform = "scale(2)";
+				theFuse[k].style.transform = "scale(3)";
 				theFuse[j].style.transform = "scale(1)";
 				k++;
 				j++;
