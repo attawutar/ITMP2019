@@ -39,7 +39,7 @@ button{
 	<input type="number" id="howManyRainbowStripsDoYouWantHeu" min="0" max="999" value="25">
 	<button onclick="rainbowHaiDooNoy()">Go!</button>
 	<button onclick="playAnimationHaiDooNoi()">Play!</button>
-	<button onclick="stopAnimation()">Stop!</button>
+	<button onclick="stopAnimation()">Stopp!</button>
 	<div id="rainbow">
 	</div>
 	<script type="text/javascript">
@@ -69,12 +69,14 @@ button{
 				k++;
 				j++;
 			},300);
+
 		}
 
 		function stopAnimation(){
 			clearInterval(thePlay);
 			theFuse[j].style.transform = "scale(1)";
 		}
+
 	</script>
 </body>
 </html>
