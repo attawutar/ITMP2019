@@ -30,7 +30,7 @@
 						<!-- email -->
 						<i class="fas fa-envelope"></i> <a href="mailto:_______" id="u_email">_______</a>
 					</p>
-					
+
 				</div>
 			</box>
 			<box col="3" class="t-left padding-l">
@@ -49,7 +49,7 @@
 
 		function ready(json){
 			console.log(json);
-			// เขียนต่อ ให้ข้อมูลคนแรก ไปแสดงผลบนหน้าเว็บ
+			// เขียนต่อ ให้ข้อมูลคนแรก ไปแสดงผลบนหน้าเว็บ[]
 			 user = json;
 			 u_userName.innerText = user[0].username
 			 u_city.innerText = user[0].address.city
