@@ -217,13 +217,20 @@
         function fallingSlowly() {
             let f = document.querySelectorAll(".fruit");
             for (var i = 0; i < f.length; i++) {
-                let nowY = f[i].getAttribute("y");
-                nowY = parseInt(nowY);
-                f[i].setAttribute("y", nowY + 1);
-                if (nowY == 4) {
+                let fruitY = f[i].getAttribute("y");
+                let fruitX = f[i].getAttribute("x");
+                fruitY = parseInt(fruitY);
+                fruitX = parseInt(fruitX);
+                f[i].setAttribute("y", fruitY + 1);
+                if (fruitY == 4) {
                     //แก้เพิ่มตรงนี้
                     f[i].outerHTML = "";
-                if (nowY)
+                }
+                if (fruitY == 4 & fruitX == nowX) {
+                    heart - 1
+                }
+                if(heart <= -1){
+                    gameStop()
                 }
             }
         }
