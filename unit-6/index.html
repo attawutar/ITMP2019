@@ -69,7 +69,12 @@
             left: 0%;
             transition: all .1s;
         }
-
+        h1{
+            margin: 0;
+            margin-top: 5px;
+            font-size: 20px;
+            padding-left: 2vw;
+        }
         .f0 {
             background-image: url('f0.png');
         }
@@ -99,6 +104,19 @@
             background-repeat: no-repeat;
             position: absolute;
             transition: all .1s;
+        }
+
+        .heart{
+            padding-left: 9px;
+            margin-left: 2vw;
+            margin-top: 0vh;
+            background-image: url(heart.png);
+            height: 100%;
+            width: 4%;
+            z-index: 10000;
+        }
+        .hide{
+            opacity: .2;
         }
 
         [x="0"] {
@@ -153,6 +171,11 @@
         <button class="butt" onclick="gameStop()">Stop</button>
         <button class="butt" onclick="gameRe()">Restart</button>
         <input type="text" id="txt">
+        <br></br>
+        <img src="heart.png" id="heart1" class="heart">
+        <img src="heart.png" id="heart2" class="heart">
+        <img src="heart.png" id="heart3" class="heart">
+        <h1 align="center" id="score">Score: 0</h1>
     </div>
     <div id="wrap">
         <div id="char" x="0" y="4"></div>
@@ -166,7 +189,8 @@
 
     <script>
         nowID = 0;
-
+        heart = 3;
+        myscore = 0;
         function gameStart() {
             letplay = setInterval(function () {
                 newFruit();
@@ -180,9 +204,7 @@
         var c = 30;
         var t;
         var timer_is_on = 0;
-        var heart = 3;
         
-
         function timedCount() {
             document.getElementById("txt").value = c;
             c = c - 1;
@@ -215,22 +237,68 @@
             nowID++;
         }
         function fallingSlowly() {
-            let f = document.querySelectorAll(".fruit");
-            for (var i = 0; i < f.length; i++) {
-                let fruitY = f[i].getAttribute("y");
-                let fruitX = f[i].getAttribute("x");
-                fruitY = parseInt(fruitY);
-                fruitX = parseInt(fruitX);
-                f[i].setAttribute("y", fruitY + 1);
-                if (fruitY == 4) {
-                    //แก้เพิ่มตรงนี้
-                    f[i].outerHTML = "";
+            let f1 = document.querySelectorAll(".fruit.f1");
+            for (var i = 0; i < f1.length; i++) {
+                let nowY = f1[i].getAttribute("y");
+                let f1X = f1[i].getAttribute("x");
+                let charY = char.getAttribute("y");
+                let nowX = char.getAttribute("x");
+                nowX = parseInt(nowX);
+                charY = parseInt(charY);
+                nowY = parseInt(nowY);
+                f1X = parseInt(f1X);
+                f1[i].setAttribute("y",nowY+1);
+                if (nowY == 4) {
+                    if (
+                        nowX == (f1X)
+                        && f1X == (nowX)
+                        && charY == (nowY)
+                        && nowY == (charY)
+                        ){
+                        ++myscore;
+                        score.innerText = "Score: "+myscore;
+                        f1[i].outerHTML = "";
+                        onsole.log(myscore);
+                        reset();
+                    }
+                    f1[i].outerHTML = "";
                 }
-                if (fruitY == 4 & fruitX == nowX) {
-                    heart - 1
-                }
-                if(heart <= -1){
-                    gameStop()
+            }
+            let f0 = document.querySelectorAll(".fruit.f0");
+            for (var i = 0; i < f0.length; i++) {
+                let nowY = f0[i].getAttribute("y");
+                let f0X = f0[i].getAttribute("x");
+                let charY = char.getAttribute("y");
+                let nowX = char.getAttribute("x");
+                nowX = parseInt(nowX);
+                charY = parseInt(charY);
+                nowY = parseInt(nowY);
+                f0X = parseInt(f0X);
+                f0[i].setAttribute("y",nowY+1);
+                if (nowY == 4) {
+                    if (
+                        nowX == (f0X)
+                        && f0X == (nowX)
+                        && charY == (nowY)
+                        && nowY == (charY)
+                        ){
+                        --heart;
+                        if (heart == 0) {
+                            heart1.classList.add("hide");
+                            gameStop();
+                            score.innerText = "GAME OVER!";
+                        } else if (heart == 1) {
+                            heart2.classList.add("hide");
+                        } else if (heart == 2) {
+                            heart3.classList.add("hide");
+                        } else {
+                            continue;
+                        }
+                        f0[i].outerHTML = "";
+                        onsole.log(heart);
+                        reset();
+                    }
+                    f0[i].outerHTML = "";
                 }
             }
         }
