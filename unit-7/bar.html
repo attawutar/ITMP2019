@@ -25,7 +25,7 @@
 	#topLine{
 		height: 2px;
 		background: deeppink;
-		width: 10%;
+		width: 5%;
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -56,19 +56,19 @@
 			<div class="t-left">
 				<div class="bar">
 					<div class="label">Thai</div>
-					<div class="chart close" style="width: 180px"></div>
+					<div id="chart" class="chart close" style="width: 180px"></div>
 				</div>
 				<div class="bar">
 					<div class="label">English</div>
-					<div class="chart close" style="width: 200px"></div>
+					<div id="chart" class="chart close" style="width: 200px"></div>
 				</div>
 				<div class="bar">
 					<div class="label">Sciene</div>
-					<div class="chart close" style="width: 20px"></div>
+					<div id="chart" class="chart close" style="width: 20px"></div>
 				</div>
 				<div class="bar">
 					<div class="label">Math</div>
-					<div class="chart close" style="width: 40px"></div>
+					<div id="chart" class="chart close" style="width: 40px"></div>
 				</div>
 			</div>
 		</div>
@@ -95,10 +95,24 @@
 	</div>
 
 	<script type="text/javascript">
+	
 		let bodyR = document.body.getBoundingClientRect();
 		let bodyH = window.innerHeight;
 		let y = window.pageYOffset;
 		let yBottom = window.pageYOffset+window.innerHeight;
+
+		
+		function topLineWidth() {
+			maxWidth = document.body.getBoundingClientRect().height - window.innerHeight;
+			nowWidth = window.pageYOffset;
+			topLine = Math.ceil((nowWidth * 100) / maxWidth)
+			console.log(topLine)
+			console.log(maxWidth)
+			topLine.style.width = `${topLineWidth}%`
+		}
+		window.addEventListener("scroll", topLineWidth);
+		
+
 		function onScroll(){
 			bodyR = document.body.getBoundingClientRect();
 			y = window.pageYOffset;
@@ -109,9 +123,11 @@
 
 		function ppp(){
 			let ppR = paragraph.getBoundingClientRect();
-			console.log(ppR);
+			console.log(bodyH);
+			console.log(chart.length);
 			console.log(ppR.top-bodyH > -100 );
-			console.log(ppR.top-bodyH < 0)
+			console.log(ppR.top-bodyH < 0);
+			console.log(ppR.top);
 			// ppR.top คือระยะห่างของพารากราฟขณะนั้นกับขอบบนเบราเซอร์ 
 			// หาก top = 0 คืออีลีเมนท์อยู่ชิดขอบบน
 			// หาก top = ความสูงหน้าจอหรือ window.innerHeight แปลว่าอีลีเมนท์นั้นกำลังโผล่มา
@@ -123,6 +139,23 @@
 			}
 		}
 		window.addEventListener("scroll", ppp);
+
+		function animationChart() {
+			let chart = document.getElementsByClassName('chart');
+			let ppR = paragraph.getBoundingClientRect();
+			if (ppR.top < 1380 && ppR.bottom > 0) {
+				for (let i = 0; i < chart.length; i++) {
+			 		chart[i].classList.remove('close')
+			 	}
+			}
+			else {
+				for (let i = 0; i < chart.length; i++) {
+			 		chart[i].classList.remove('close')
+		
+			}
+		}
+		}
+		window.addEventListener("scroll", animationChart);
 	</script>
 </body>
 </html>
