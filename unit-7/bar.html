@@ -103,12 +103,12 @@
 
 		
 		function topLineWidth() {
-			maxWidth = document.body.getBoundingClientRect().height - window.innerHeight;
-			nowWidth = window.pageYOffset;
-			topLine = Math.ceil((nowWidth * 100) / maxWidth)
+			let maxWidth = document.body.getBoundingClientRect().height - window.innerHeight;
+			let nowWidth = window.pageYOffset;
+			let topLine = Math.ceil((nowWidth * 100) / maxWidth)
 			console.log(topLine)
 			console.log(maxWidth)
-			topLine.style.width = `${topLineWidth}%`
+			document.getElementById('topLine').style.width = `${topLine}%`
 		}
 		window.addEventListener("scroll", topLineWidth);
 		
