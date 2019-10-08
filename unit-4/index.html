@@ -40,6 +40,7 @@ button{
 	<button onclick="rainbowHaiDooNoy()">Go!</button>
 	<button onclick="playAnimationHaiDooNoi()">Play!</button>
 	<button onclick="stopAnimation()">Stopp!</button>
+	<button onclick="clear()">Clear!</button>
 	<div id="rainbow">
 	</div>
 	<script type="text/javascript">
@@ -50,11 +51,16 @@ button{
 			
 				for (let i = 0; i < theNum; i++) {
 					setTimeout(function(){
-						rainbow.innerHTML += `<div class="fuse" style="--hue:${i*(360/theNum)}"></div>`;
+						rainbow.innerHTML += `<div class="fuse" id="point" style="--hue:${i*(360/theNum)}"></div>`;
 					},20*i);
-					
 				}
-				
+
+		}
+
+		function clear(){
+			rainbow.innerHTML = '';
+			// v.outerHTML = "";
+
 		}
 		function playAnimationHaiDooNoi(){
 			theFuse = document.querySelectorAll('.fuse');
