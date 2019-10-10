@@ -18,8 +18,8 @@
 		animation: blink .2s infinite;
 	}
 	#tooPla{
-		height: 600px;
-		background: navy;
+		height: 6000px;
+		background-image: linear-gradient(to bottom, rgb(195, 227, 255), rgb(3, 50, 74));
 		position: relative;
 		overflow: hidden;
 	}
@@ -33,21 +33,40 @@
 		left: 80px;
 	}
 	.f2{
-		top: 700px;
+		top: 1250px;
 		left: 480px;
 	}
 	.f3{
-		top: 540px;
-		left: 60px;
+		top: 2650px;
+		left: 1200px;
 	}
 	.f4{
-		top: 580px;
-		left: 200px;
+		top: 3870px;
+		left: 800px;
 	}
 	.f5{
-		top: 400px;
-		left: 400px;
+		top: 4050px;
+		left: 1100px;
 	}
+	.f6{
+		top: 7120px;
+		left: 680px;
+	}
+	.f7{
+		top: 9180px;
+		left: 300px;
+	}
+	.f8{
+		top: 15000px;
+		left: 700px;
+		width: 25%;
+	}
+	.footer{
+		top: 92%;
+		width: 100%;
+		position: relative;
+	}
+
 </style>
 	<title>Hello Ocean World</title>
 	<meta charset="utf-8">
@@ -55,61 +74,39 @@
 </head>
 <body>
 
-	<div id="d1" style="height: 400px;width: 100%;background: pink"></div>
-	<div id="d2" style="height: 400px;width: 100%;background: orchid"></div>
-	<div id="d3" style="height: 400px;width: 100%;background: pink"></div>
-	<div id="d4" style="height: 400px;width: 100%;background: orchid"></div>
-	<div id="d5" style="height: 400px;width: 100%;background: pink"></div>
-	<div id="d6" style="height: 400px;width: 100%;background: orchid"></div>
-	<div id="d7" style="height: 400px;width: 100%;background: pink"></div>
-	<div id="d8" style="height: 400px;width: 100%;background: orchid"></div>
-		<div id="tooPla">
+	<div id="tooPla">
 		<img src="fish1.png" class="fish f1" id="f1">
-		<img src="fish1.png" class="fish f2" id="f2">
-		<img src="fish1.png" class="fish f3" id="f3">
-		<img src="fish1.png" class="fish f4" id="f4">
-		<img src="fish1.png" class="fish f5" id="f5">
+		<img src="clown-fish.png" class="fish f2" id="f2">
+		<img src="fish (1).png" class="fish f3" id="f3">
+		<img src="fish (2).png" class="fish f4" id="f4">
+		<img src="fish.png" class="fish f5" id="f5">
+		<img src="jellyfish.png" class="fish f6" id="f6">
+		<img src="salmon.png" class="fish f7" id="f7">
+		<img src="shark.png" class="fish f8" id="f8">
+		<img src="foot.png" class="footer">
 	</div>
-	<div id="d9" style="height: 400px;width: 100%;background: pink"></div>
-	<div id="d10" style="height: 400px;width: 100%;background: orchid"></div>
-	<div id="d11" style="height: 400px;width: 100%;background: pink"></div>
-	<div id="d12" style="height: 400px;width: 100%;background: orchid"></div>
-	<div id="d13" style="height: 400px;width: 100%;background: pink"></div>
-	<div id="d14" style="height: 400px;width: 100%;background: orchid"></div>
-	<div id="d15" style="height: 400px;width: 100%;background: pink"></div>
-	<div id="d16" style="height: 400px;width: 100%;background: orchid"></div>
-	<div id="yoyo" class="yoyo"></div>
+	<!-- <div id="yoyo" class="yoyo"></div> -->
 
 
 
 	<script type="text/javascript">
-		function rotateNongYoyo(){
-			let r = window.pageYOffset;
-			yoyo.style.transform = `rotate(${r}deg)`;
-		}
-		window.addEventListener("scroll", rotateNongYoyo);
-		function blinkThat(){
-			let ey = d3.offsetTop;
-			let ebottom = ey+d3.offsetHeight; 
-			let nowTop = window.pageYOffset;
-			let nowBottom = nowTop+window.innerHeight;
-			if (nowBottom>ey+300 && nowTop<ebottom-100) {
-				d3.classList.add('blink');
-			}
-			else{
-				d3.classList.remove('blink');
-			}
-		}
-		window.addEventListener("scroll", blinkThat);
+		// function rotateNongYoyo(){
+		// 	let r = window.pageYOffset;
+		// 	yoyo.style.transform = `rotate(${r}deg)`;
+		// }
+		// window.addEventListener("scroll", rotateNongYoyo);
 
 		function plaToo(){
-			let y = window.pageYOffset-tooPla.offsetTop+tooPla.offsetHeight;
+			let y = window.pageYOffset-tooPla.offsetTop;
 			console.log(y);
 			f1.style.marginTop = `-${y}px`;
-			f2.style.marginTop = `-${y*3}px`;
-			f3.style.marginTop = `-${y*2}px`;
-			f4.style.marginTop = `-${y*1.5}px`;
+			f2.style.marginTop = `-${y*1}px`;
+			f3.style.marginTop = `-${y*0.9}px`;
+			f4.style.marginTop = `-${y*1.2}px`;
 			f5.style.marginTop = `-${y*0.7}px`;
+			f6.style.marginTop = `-${y*1}px`;
+			f7.style.marginTop = `-${y*1}px`;
+			f8.style.marginTop = `-${y*2}px`;
 		}
 		window.addEventListener("scroll", plaToo);
 	</script>
