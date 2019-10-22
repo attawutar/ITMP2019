@@ -1,0 +1,50 @@
+#mybox{
+    width: 300px;
+    height: 300px;
+    background: grey;
+}
+div{
+    height: 100px;
+}
+body{
+    margin: 0;
+    background: grey;
+}
+*{
+    transition: 0.3s;
+}
+.w180{width: 180px}
+.w320{width: 320px}
+.w440{width: 440px}
+.w768{width: 768px}
+.w500{width: 500px;background: yellow}
+
+#pic{
+    width: 100%;
+    padding-top: 56.25%;  
+    background-size: cover;
+    background-position: center;
+    background-image: url("lamp1.jpg"); 
+}
+.container{
+    width: calc(100% - 32px);
+    background: white;
+    padding: 2%;
+    box-sizing: border-box;
+    margin: auto;
+    max-width: 1200px;
+}
+@media   (max-width: 800px){
+    #pic{
+        width: 100%;
+    height: 100%;   
+    background-image: url("lamp2.jpg"); 
+    }
+}
+@media  (max-width: 400px){
+    #pic{
+        width: 100%;
+    height: 100%;   
+    background-image: url("lamp3.jpg"); 
+    }
+}
